@@ -8,16 +8,953 @@
 
 		<link rel="stylesheet" href="dist/reset.css">
 		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="dist/theme/white.css">
 
 		<!-- Theme used for syntax highlighted code -->
 		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+		<style>
+			@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap);
+
+			body{
+				font-family: Montserrat, Verdana, sans-serif;
+			}
+			.code{
+				height: 60vh;
+				font-size:0.8rem;
+			}
+			div.intro{
+				margin-top:3rem;
+				width: 40%;
+				margin:3rem auto;
+			}
+			div.intro p{
+				text-transform: none;
+				border-bottom: solid 1px;
+			}
+			.examples, .examples li	{
+				font-size: 1.2rem;
+				list-style: none;
+				text-align: left;
+				width: 80%;
+			}
+			.explanation{
+				position: fixed;
+				top:4rem;
+				right:1rem;
+				background: lightyellow;
+				width: 30%;
+				font-size: 2rem;
+				text-align: left;
+				padding: 1rem;
+			}
+			.features{
+				list-style: none;
+				width: 100%;
+			}
+			h1{
+				margin-top:0;
+			}
+			#logo{
+				width: 30rem;
+			}
+
+			.reveal pre.code-wrapper{
+				height: 70%;
+				font-size: 1rem;
+			}
+			.replace p{
+				text-align: left;
+				width: 80%;
+				font-size: 1.5rem;
+				margin:0 auto;
+			}
+			.reveal pre{
+				width: 100%;
+			}
+
+/*
+			section.live h3{
+				position: absolute;
+				bottom:3rem;
+			}
+*/
+			section.live section{
+				margin-top:10rem;
+			}
+
+			section.biglive section{
+				margin-top:0;
+			}
+			.reveal iframe{
+				margin-top:10rem;
+				height: 70%;
+				overflow: auto;
+				margin-bottom: 3rem;
+				max-height: 80% !important;
+			}
+			.reveal .biglive iframe{
+				max-height: 95% !important;
+				margin-top:0;
+			}
+
+			.reveal img{
+				vertical-align: middle;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
+				<section data-transition="convex">
+					<img id="logo" src="images/fore-logo.png">
+					<h1 class="r-fit-text">An xformish framework in web components</h1>
+				</section>
+
+
+				<section>
+					<h2 class="r-fit-text">For(e) Humanists</h2>
+					<p> - Metadata, forms and more - </p>
+					<div class="intro fragment fade-down">
+						<p>Part one</p>
+						<h4>Introduction to Fore</h4>
+					</div>
+					<div class="intro fragment fade-down">
+						<p>Part two</p>
+						<h4>Editing a TEI header</h4>
+					</div>
+				</section>
+
+
+				<section data-transition="zoom" data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+<!--					<h2 class="fragment r-fit-text">Fore<span class="fragment">...</span><span class="fragment">what?</span> </h2>-->
+					<div class="intro">
+						<p>Part one</p>
+						<h4>Introduction to Fore</h4>
+					</div>
+					<h3 class="fragment fade-down">Fore<span>...</span><span>what?</span> </h3>
+				</section>
+
+				<section>
+					<h2>Fore is for editing</h2>
+					<h1>XML</h1>
+					<p class="fragment"> (and JSON) </p>
+					<h2>in the browser.</h2>
+				</section>
+
+				<section data-auto-animate>
+					<p>why should i care?</p>
+					<h2 class="fragment">The Problem</h2>
+					<div class="fragment">
+					<p style="text-align: left">what HTML gives us...</p>
+					<pre data-id="code-animation" ><code class="hljs" data-trim data-line-numbers>
+						<form>
+							<input name="forename">
+							<input name="lastname">
+						</form>
+
+					</code></pre>
+					</div>
+					<p class="fragment">...are just key/value pairs submitted url-encoded or as part of a request body.</p>
+<!--					<p class="fragment">forename:Hans, lastname:Seitan</p>-->
+
+				</section>
+
+<!--
+				<section>
+					<h2>Use JSON</h2>
+
+				</section>
+-->
+
+				<section>
+					<h2 class="r-fit-text">Result?</h2>
+				</section>
+				<section data-transition="zoom">
+					<h2 class="r-fit-text">Work!</h2>
+					<ul style="list-style: none">
+						<li class="fragment">decode params on server</li>
+						<li class="fragment">check values</li>
+						<li class="fragment">map to their target</li>
+					</ul>
+					<p class="fragment">And what about nested data?</p>
+				</section>
+
+				<section data-transition="convex">
+					<h2 class="r-fit-text">enter Fore</h2>
+					<p style="text-align: left" class="fragment">The unavoidable feature list...</p>
+					<ul class="features" style="list-style: none">
+						<li class="fragment">Model-driven</li>
+						<li class="fragment">declarative - no scripting required</li>
+						<li class="fragment">multi-instance</li>
+						<li class="fragment">state engine with data dependency tracking</li>
+						<li class="fragment">just pure platform - minimal dependencies</li>
+						<li class="fragment">and...</li>
+					</ul>
+					<aside class="notes">
+						MVC - separation of data, logic and UI<br>
+						declarative - describe it don't script it - generateable<br>
+						not just one instance...<br>
+						consistency of a state engine that calcs in the right order<br>
+					</aside>
+				</section>
+
+				<section data-transition="zoom">
+					<h2>It's Open Source</h2>
+					<p>MIT License</p>
+				</section>
+				<section data-auto-animate>
+					<h2>Writing forms</h2>
+					<h3 data-id="code-title">The barebones</h3>
+					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1,3">
+						<fx-form>
+							...
+						</fx-form>
+					</code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">The magic ref</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="2"><script type="text/template">
+						<fx-form>
+							<fx-control ref="greeting"></fx-control>
+						</fx-form>
+					</script></code></pre>
+
+					<p class="fragment left">a <code>ref</code> is an <span style="border-bottom:solid 1px;">XPath 3</span> expression</p>
+					<p class="fragment left">that binds controls to data nodes</p>
+					<aside class="notes">
+						which data?
+
+						which model?
+					</aside>
+
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">auto-generated model</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="2-10"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+							</fx-model>
+
+							<fx-control ref="greeting"></fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">two-way binding</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="10"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+							</fx-model>
+
+							<fx-control ref="greeting" value="Hello"></fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">Model to UI - UI to model</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="5,10"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting>Hello</greeting>
+									</data>
+								</fx-instance>
+							</fx-model>
+
+							<fx-control ref="greeting" value="Hello"></fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">Attach a constraint</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="8|8,11"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-bind ref="greeting" required="true()"></fx-bind>
+							</fx-model>
+
+							<fx-control ref="greeting"></fx-control>
+						</fx-form>
+					</script></code></pre>
+
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">Other constraints</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="8-13"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-bind ref="greeting"
+										 required="true()"
+										 readonly="true()"
+										 constraint="false()"
+										 relevant="true()"
+										 type="string"></fx-bind>
+							</fx-model>
+
+							<fx-control ref="greeting"></fx-control>
+						</fx-form>
+					</script></code></pre>
+<!--					<aside class="explanation fragment">you can add as many binds as needed and nest them</aside>-->
+
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">speak to the user</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="12"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-bind ref="greeting" required="true()"></fx-bind>
+							</fx-model>
+
+							<fx-control ref="greeting">
+								<fx-alert>Hey - be polite please</fx-alert>
+							</fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">Actions and Events</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="13"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-bind ref="greeting" required="true()"></fx-bind>
+							</fx-model>
+
+							<fx-control ref="greeting">
+								<fx-alert>Hey - be polite please</fx-alert>
+								<fx-message event="value-changed">Thanks</fx-message>
+							</fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section>
+					<h3>Submissions</h3>
+					<p class="fragment">The Swiss army knife<br> of request handling</p>
+
+					<div class="fragment">
+					<pre data-id="code-animation"><code data-trim data-line-numbers="8"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-submission url="someUrl" method="post" replace="instance"></fx-submission>
+							</fx-model>
+							... UI ...
+						</fx-form>
+					</script></code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h3>get, put, post, delete...</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="2"><script type="text/template">
+						<fx-submission url="someUrl"
+									   method="post">
+						</fx-submission>
+					</script></code></pre>
+
+				</section>
+
+				<section class="replace">
+					<h3>the mighty <code>replace</code> attribute</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="3"><script type="text/template">
+						<fx-submission url="someUrl"
+									   method="post"
+									   replace="instance"></fx-submission>
+					</script></code></pre>
+
+					<p class="fragment"><code>instance</code> - uses the response as new instance data</p>
+					<p class="fragment"><code>all</code> - uses the response and replaces viewport</p>
+					<p class="fragment"><code>none</code> - ignore response data</p>
+					<p class="fragment"><code>redirect</code> - expect URL as string to redirect to</p>
+					<p class="fragment"><code>target</code> - expecting HTML and replacing some part of the UI</p>
+				</section>
+
+				<section>
+					<h3>Submission Events</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="|4|5|6"><script type="text/template">
+						<fx-submission url="someUrl"
+									   method="post"
+									   replace="instance">
+							<fx-message event="submit">Going to submit</fx-message>
+							<fx-message event="submit-done">Yep - it worked</fx-message>
+							<fx-message event="submit-error">Ouch - something went wrong</fx-message>
+						</fx-submission>
+					</script></code></pre>
+
+				</section>
+
+				<section>
+					<h3>Submission chains</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="|4|6-8"><script type="text/template">
+						<fx-submission id="one" url="someUrl"
+									   method="get"
+									   replace="instance">
+							<fx-send submission="two" event="submit-done"></fx-send>
+						</fx-submission>
+						<fx-submission id="two" url="anotherUrl"
+									   method="post">
+						</fx-submission>
+					</script></code></pre>
+
+				</section>
+
+				<section>
+					<h3>There's more to say...</h3>
+					<p>more Actions</p>
+					<p>more Events</p>
+					<p>generic control, trigger and output elements</p>
+					<p>Template Expressions</p>
+					<p>Repeats and Switches</p>
+					<p>custom functions in XPath and Javascript</p>
+				</section>
+
+				<section>
+					<h3>Github</h3>
+					<p>https://github.com/Jinntec/Fore</p>
+					<h3>Github Discussions</h3>
+					<p>https://github.com/Jinntec/Fore/discussions</p>
+					<h3>Npm</h3>
+					<p>https://www.npmjs.com/package/@jinntec/fore</p>
+				</section>
+
+				<section data-transition="convex" data-background="orange">
+					<h2>Part 2</h2>
+					<h3>editing a simple TEI header</h3>
+				</section>
+
+				<section data-background="orange">
+					<h2>the goal...</h2>
+				</section>
+
+				<section data-background="orange">
+					<h3>Edit a basic TEI header</h3>
+					<div class="r-stretch">
+<!--					<pre class="code" style="height: 70vh;font-size:0.8rem;" data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">-->
+					<pre data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">
+						<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+						<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+								schematypens="http://purl.oclc.org/dsdl/schematron"?>
+						<TEI>
+							<teiHeader>
+								<fileDesc>
+									<titleStmt>
+										<title>Main title for the electronic version of the text</title>
+										<title type="sub">One or more additional titles, which may have a @type</title>
+										<author>Rudi Rüssel</author>
+										<author>Berta Bär</author>
+										<editor>Heinz Hund</editor>
+									</titleStmt>
+									<publicationStmt>
+										<publisher>Name of the institution publishing the electronic version</publisher>
+										<date when="2021-06-03"/>
+										<availability>
+											<licence target="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution
+												ShareAlike 3.0 License
+											</licence>
+										</availability>
+									</publicationStmt>
+									<sourceDesc>
+										<p>A free text paragraph describing the manuscript used</p>
+									</sourceDesc>
+								</fileDesc>
+								<profileDesc>
+									<langUsage>
+										<language ident="de"/>
+									</langUsage>
+									<textClass>
+										<keywords>
+											<term>XML</term>
+											<term>TEI</term>
+										</keywords>
+									</textClass>
+								</profileDesc>
+								<revisionDesc>
+									<change when="2021-05-31T09:04:25+02:00">teiHeader was automatically produced from the database</change>
+								</revisionDesc>
+							</teiHeader>
+							<text>
+								<body>
+									<p>Some text here.</p>
+								</body>
+							</text>
+						</TEI>
+					</script></code></pre>
+					</div>
+
+				</section>
+
+				<section data-background="orange">
+					<h3>the barebones</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="|1|21|13-20|15"><script type="text/template">
+					<html lang="en" xmlns:tei="http://www.tei-c.org/ns/1.0">
+					<head>
+							<meta charset="utf-8"/>
+							<meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+							<title>TEI header editor sample</title>
+							<!--
+							... additional script and css imports...
+							-->
+					</head>
+					<body unresolved="unresolved">
+						<div class="wrapper">
+							<h1>Editing an TEI header</h1>
+							<fx-form>
+								<fx-model>
+									<fx-instance src="tei/header.xml"></fx-instance>
+								</fx-model>
+
+								<fx-group ref="teiHeader">
+								</fx-group>
+							</fx-form>
+							<script type="module" src="../index.js">
+						</body>
+					</html>
+					</script></code></pre>
+					<aside class="notes">
+						<ul>
+							<li>add the TEI namespace</li>
+							<li>make sure Fore is imported. local, dist from npm or cdn</li>
+							<li>add barebone form</li>
+							<li>load tei file</li>
+						</ul>
+					</aside>
+
+				</section>
+				<section data-background="orange">
+					<h3>adding UI</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="18-34|18|19|20|21-29|21|22-28|23|24-27|25|26|30-33|32|20-33"><script type="text/template">
+					<html lang="en" xmlns:tei="http://www.tei-c.org/ns/1.0">
+					<head>
+							<meta charset="utf-8"/>
+							<meta content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes" name="viewport"/>
+							<title>TEI header editor sample</title>
+							<!--
+							... additional script and css imports...
+							-->
+					</head>
+					<body unresolved="unresolved">
+						<div class="wrapper">
+							<h1>Editing an TEI header</h1>
+							<fx-form>
+								<fx-model>
+									<fx-instance src="tei/header.xml"></fx-instance>
+								</fx-model>
+
+								<fx-group ref="teiHeader">
+									<fx-group ref=".//titleStmt">
+										<h4>Title</h4>
+										<fx-repeat ref="title" id="titles">
+											<template>
+												<fx-control ref="."></fx-control>
+												<fx-trigger class="deleteIcon">
+													<button>x</button>
+													<fx-delete ref="."></fx-delete>
+												</fx-trigger>
+											</template>
+										</fx-repeat>
+										<fx-trigger>
+											<button>add title</button>
+											<fx-append ref="title" repeat="titles"></fx-append>
+										</fx-trigger>
+									</fx-group>
+								</fx-group>
+							</fx-form>
+							<script type="module" src="../index.js">
+						</body>
+						</html>
+					</script></code></pre>
+					<div style="position: absolute;bottom:0; right:0; width: 300px;">
+						<pre class="code" data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">
+							<teiHeader>
+								<fileDesc>
+									<titleStmt>
+										<title>Main title for the electronic version of the text</title>
+										<title type="sub">One or more additional titles, which may have a @type</title>
+										<author>Rudi Rüssel</author>
+										<author>Berta Bär</author>
+										<editor>Heinz Hund</editor>
+									</titleStmt>
+									<publicationStmt>
+										<publisher>Name of the institution publishing the electronic version</publisher>
+										<date when="2021-06-03"/>
+										<availability>
+											<licence target="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution
+												ShareAlike 3.0 License
+											</licence>
+										</availability>
+									</publicationStmt>
+									<sourceDesc>
+										<p>A free text paragraph describing the manuscript used</p>
+									</sourceDesc>
+								</fileDesc>
+								<profileDesc>
+									<langUsage>
+										<language ident="de"/>
+									</langUsage>
+									<textClass>
+										<keywords>
+											<term>XML</term>
+											<term>TEI</term>
+										</keywords>
+									</textClass>
+								</profileDesc>
+								<revisionDesc>
+									<change when="2021-05-31T09:04:25+02:00">teiHeader was automatically produced from the database</change>
+								</revisionDesc>
+							</teiHeader>
+					</script></code></pre>
+
+
+					</div>
+					<aside class="notes">
+						<ol>
+							<li>adding UI</li>
+							<li>setting teiHeader as context ref</li>
+							<li>not using namespace in this demo</li>
+							<li>not using namespace in this demo</li>
+						</ol>
+					</aside>
+				</section>
+				<section data-background="orange">
+					<h3>repeat...</h3>
+
+					<pre data-id="code-animation"><code data-rim data-line-numbers="4-17|19-32|20|31|34-47|1-49"><script type="text/template">
+						<fx-group ref="teiHeader">
+							<fx-group ref=".//titleStmt">
+								<h4>Title</h4>
+								<fx-repeat ref="title" id="titles">
+									<template>
+										<fx-control ref="."></fx-control>
+										<fx-trigger class="deleteIcon">
+											<button>x</button>
+											<fx-delete ref="."></fx-delete>
+										</fx-trigger>
+									</template>
+								</fx-repeat>
+								<fx-trigger>
+									<button>add title</button>
+									<fx-append ref="title" repeat="titles"></fx-append>
+								</fx-trigger>
+
+								<h4>Author</h4>
+								<fx-repeat ref="author" id="authors">
+									<template>
+										<fx-control ref="."></fx-control>
+										<fx-trigger class="deleteIcon">
+											<button>x</button>
+											<fx-delete ref="."></fx-delete>
+										</fx-trigger>
+									</template>
+								</fx-repeat>
+								<fx-trigger>
+									<button>add author</button>
+									<fx-append ref="author" repeat="authors"></fx-append>
+								</fx-trigger>
+
+								<h4>Editor</h4>
+								<fx-repeat ref="editor" id="editors">
+									<template>
+										<fx-control ref="."></fx-control>
+										<fx-trigger class="deleteIcon">
+											<button>x</button>
+											<fx-delete ref="."></fx-delete>
+										</fx-trigger>
+									</template>
+								</fx-repeat>
+								<fx-trigger>
+									<button>add editor</button>
+									<fx-append ref="editor" repeat="editors"></fx-append>
+								</fx-trigger>
+							</fx-group>
+						</fx-group>
+					</script></code></pre>
+
+					<div style="position: absolute;bottom:0; right:0; width: 300px;">
+						<pre class="code" data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">
+							<teiHeader>
+								<fileDesc>
+									<titleStmt>
+										<title>Main title for the electronic version of the text</title>
+										<title type="sub">One or more additional titles, which may have a @type</title>
+										<author>Rudi Rüssel</author>
+										<author>Berta Bär</author>
+										<editor>Heinz Hund</editor>
+									</titleStmt>
+									<publicationStmt>
+										<publisher>Name of the institution publishing the electronic version</publisher>
+										<date when="2021-06-03"/>
+										<availability>
+											<licence target="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution
+												ShareAlike 3.0 License
+											</licence>
+										</availability>
+									</publicationStmt>
+									<sourceDesc>
+										<p>A free text paragraph describing the manuscript used</p>
+									</sourceDesc>
+								</fileDesc>
+								<profileDesc>
+									<langUsage>
+										<language ident="de"/>
+									</langUsage>
+									<textClass>
+										<keywords>
+											<term>XML</term>
+											<term>TEI</term>
+										</keywords>
+									</textClass>
+								</profileDesc>
+								<revisionDesc>
+									<change when="2021-05-31T09:04:25+02:00">teiHeader was automatically produced from the database</change>
+								</revisionDesc>
+							</teiHeader>
+					</script></code></pre>
+
+
+					</div>
+					<aside class="notes">
+						<ol>
+							<li>adding UI</li>
+							<li>setting teiHeader as context ref</li>
+							<li>not using namespace in this demo</li>
+							<li>not using namespace in this demo</li>
+						</ol>
+					</aside>
+				</section>
+
+				<section data-background="orange" class="live">
+					<h3 style="margin-top:2.5rem;">result so far</h3>
+					<section class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-1.html">
+					</section>
+				</section>
+
+				<section data-background="orange"  class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-2.html">
+					<h3 style="margin-top:2.5rem;">style please</h3>
+
+					<section style="overflow: auto" data-background-iframe="http://localhost:8090/demo/simple-tei-header-2.html">
+					</section>
+					<aside style="position: absolute;right: -5rem;bottom:0;">
+						<pre style="opacity: 0.8" data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">
+							<style>
+								.deleteIcon button {
+									border: none;
+									cursor: pointer;
+									background: transparent;
+									color: red;
+								}
+								input{
+									width: 100%;
+									padding: 0.5rem;
+									border: none;
+									font-size: 1rem;
+								}
+
+								fx-repeatitem {
+									display: grid;
+									grid-template-columns: auto 30px;
+									width: 100%;
+									align-items: baseline;
+									margin: 0.3rem 0;
+								}
+							</style>
+						</script></code></pre>
+					</aside>
+				</section>
+
+				<section data-background="orange">
+					<h3>add more structure</h3>
+<pre data-id="code-animation"><code data-rim data-line-numbers="|15-71|16-17|65-66|68-69|3-6|5|7-10|11-14"><script type="text/template">
+	<fx-group ref="teiHeader">
+		<fx-trigger>
+			<paper-button raised>fileDesc</paper-button>
+			<fx-toggle case="file"></fx-toggle>
+		</fx-trigger>
+		<fx-trigger>
+			<paper-button raised>profileDesc</paper-button>
+			<fx-toggle case="profile"></fx-toggle>
+		</fx-trigger>
+		<fx-trigger>
+			<paper-button raised>revisionDesc</paper-button>
+			<fx-toggle case="revision"></fx-toggle>
+		</fx-trigger>
+		<fx-switch>
+			<fx-case id="file">
+				<h2>fileDesc</h2>
+				<fx-group ref=".//titleStmt">
+					<h4>Title</h4>
+					<fx-repeat ref="title" id="titles">
+						<template>
+							<fx-control ref="."></fx-control>
+							<fx-trigger class="deleteIcon">
+								<button>x</button>
+								<fx-delete ref="."></fx-delete>
+							</fx-trigger>
+						</template>
+					</fx-repeat>
+					<fx-trigger>
+						<button>add title</button>
+						<fx-append ref="title" repeat="titles"></fx-append>
+					</fx-trigger>
+
+					<h4>Author</h4>
+					<fx-repeat ref="author" id="authors">
+						<template>
+							<fx-control ref="."></fx-control>
+							<fx-trigger class="deleteIcon">
+								<button>x</button>
+								<fx-delete ref="."></fx-delete>
+							</fx-trigger>
+						</template>
+					</fx-repeat>
+					<fx-trigger>
+						<button>add author</button>
+						<fx-append ref="author" repeat="authors"></fx-append>
+					</fx-trigger>
+
+					<h4>Editor</h4>
+					<fx-repeat ref="editor" id="editors">
+						<template>
+							<fx-control ref="."></fx-control>
+							<fx-trigger class="deleteIcon">
+								<button>x</button>
+								<fx-delete ref="."></fx-delete>
+							</fx-trigger>
+						</template>
+					</fx-repeat>
+					<fx-trigger>
+						<button>add editor</button>
+						<fx-append ref="editor" repeat="editors"></fx-append>
+					</fx-trigger>
+				</fx-group>
+			</fx-case>
+			<fx-case id="profile">
+				<h2>profileDesc</h2>
+			</fx-case>
+			<fx-case id="revision">
+				<h2>revisionDesc</h2>
+			</fx-case>
+		</fx-switch>
+	</fx-group>
+
+</script></code></pre>
+					<div style="position: absolute;bottom:0; right:0; width: 300px;">
+						<pre class="code" data-id="code-animation"><code data-trim data-line-numbers="3-9|"><script type="text/template">
+							<teiHeader>
+								<fileDesc>
+									<titleStmt>
+										<title>Main title for the electronic version of the text</title>
+										<title type="sub">One or more additional titles, which may have a @type</title>
+										<author>Rudi Rüssel</author>
+										<author>Berta Bär</author>
+										<editor>Heinz Hund</editor>
+									</titleStmt>
+									<publicationStmt>
+										<publisher>Name of the institution publishing the electronic version</publisher>
+										<date when="2021-06-03"/>
+										<availability>
+											<licence target="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution
+												ShareAlike 3.0 License
+											</licence>
+										</availability>
+									</publicationStmt>
+									<sourceDesc>
+										<p>A free text paragraph describing the manuscript used</p>
+									</sourceDesc>
+								</fileDesc>
+								<profileDesc>
+									<langUsage>
+										<language ident="de"/>
+									</langUsage>
+									<textClass>
+										<keywords>
+											<term>XML</term>
+											<term>TEI</term>
+										</keywords>
+									</textClass>
+								</profileDesc>
+								<revisionDesc>
+									<change when="2021-05-31T09:04:25+02:00">teiHeader was automatically produced from the database</change>
+								</revisionDesc>
+							</teiHeader>
+					</script></code></pre>
+
+
+					</div>
+
+				</section>
+
+
+				<section data-background="orange" class="live">
+					<h3 style="margin-top:2.5rem;">switch with toggles</h3>
+					<section class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-3.html">
+					</section>
+				</section>
+
+				<section data-background="orange" data-transition="convex">
+					<a href="http://localhost:8090/demo/simple-tei-header.html" target="_blank"><h3>a couple of refinements later</h3></a>
+				</section>
+
+				<section data-background="white" data-transition="zoom">
+					<h2>Thank you!</h2>
+					<p>Please give us a <img src="images/star.png"> on github</p>
+					<p>https://github.com/Jinntec/Fore</p>
+				</section>
+				<!--
+                                <section>
+                                    <h2>JSON Forms!</h2>
+                                    <p class="fragment">Does it solve our problem?</p>
+                                    <p class="fragment">Solves both problems at once!</p>
+                                    <p class="fragment">doesn't it?</p>
+                                </section>
+
+                                <section>
+                                    <p>But i have documents - i mean markup</p>
+                                    <p class="fragment">and metadata</p>
+                                </section>
+                -->
 			</div>
 		</div>
 
@@ -31,10 +968,17 @@
 			// - https://revealjs.com/config/
 			Reveal.initialize({
 				hash: true,
+				controls: true,
+				controlsLayout: 'bottom-right',
 
 				// Learn about plugins: https://revealjs.com/plugins/
 				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
 			});
 		</script>
+<!--
+		<script type="module">
+			import './js/fore-all.js';
+		</script>
+-->
 	</body>
 </html>
