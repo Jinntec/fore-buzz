@@ -24,7 +24,7 @@
 			}
 			div.intro{
 				margin-top:3rem;
-				width: 40%;
+				width: 60%;
 				margin:3rem auto;
 			}
 			div.intro p{
@@ -47,15 +47,28 @@
 				text-align: left;
 				padding: 1rem;
 			}
-			.features{
-				list-style: none;
-				width: 100%;
-			}
-			h1{
+			.reveal h1{
 				margin-top:0;
+				text-transform: none;
+			}
+			.reveal h2{
+				text-transform: none;
 			}
 			#logo{
 				width: 30rem;
+			}
+			.logos{
+				width: 240px;
+			}
+			#fore{
+				/*width: 400px;*/
+			}
+			.logogrid{
+				display: grid;
+				grid-template-columns: 50% 50%;
+				align-items: center;
+				justify-items: center;
+				position: relative;
 			}
 
 			.reveal pre.code-wrapper{
@@ -71,13 +84,15 @@
 			.reveal pre{
 				width: 100%;
 			}
-
-/*
-			section.live h3{
-				position: absolute;
-				bottom:3rem;
+			.reveal ul{
+				list-style: none;
+				margin:0;
 			}
-*/
+			.reveal ul li{
+				padding: 0;
+
+			}
+
 			section.live section{
 				margin-top:10rem;
 			}
@@ -97,7 +112,7 @@
 				margin-top:0;
 			}
 
-			.reveal img{
+			.re<veal img{
 				vertical-align: middle;
 			}
 		</style>
@@ -105,14 +120,35 @@
 	<body>
 		<div class="reveal">
 			<div class="slides">
-				<section data-transition="convex">
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 5.000)" >
 					<img id="logo" src="images/fore-logo.png">
-					<h1 class="r-fit-text">An xformish framework in web components</h1>
+					<h1 class="r-fit-text">An <span data-id="xf">XForms</span> Framework in Web Components</h1>
+					<aside class="notes">
+						<ul>
+							<li>hello ... my name</li>
+							<li>involved with XForms ...</li>
+							<li>call it 'xformish'</li>
+						</ul>
+					</aside>
+				</section>
+
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 5.000)">
+					<img id="logo" src="images/fore-logo.png">
+					<h1 class="r-fit-text">An <span data-id="xf" style="border-bottom:solid 1px;text-transform: none;">xformish</span> Framework in Web Components</h1>
+					<aside class="notes">
+						<ul>
+							<li>kudos to the spec writers</li>
+							<li>unmatched architecture for handling forms</li>
+							<li>no claim to implement the standard</li>
+
+						</ul>
+						<p>let's dive in</p>
+					</aside>
 				</section>
 
 
-				<section>
-					<h2 class="r-fit-text">For(e) Humanists</h2>
+				<section data-transition="zoom">
+					<h2>For(e) Humanists</h2>
 					<p> - Metadata, forms and more - </p>
 					<div class="intro fragment fade-down">
 						<p>Part one</p>
@@ -122,27 +158,41 @@
 						<p>Part two</p>
 						<h4>Editing a TEI header</h4>
 					</div>
+					<aside class="notes">
+						<ul>
+							<li>the title is...</li>
+						</ul>
+					</aside>
 				</section>
 
 
-				<section data-transition="zoom" data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 1.000)">
+				<section data-transition="zoom">
 <!--					<h2 class="fragment r-fit-text">Fore<span class="fragment">...</span><span class="fragment">what?</span> </h2>-->
 					<div class="intro">
 						<p>Part one</p>
-						<h4>Introduction to Fore</h4>
+						<h3>Introduction to Fore</h3>
 					</div>
 					<h3 class="fragment fade-down">Fore<span>...</span><span>what?</span> </h3>
+					<aside class="notes">
+						<p>Fore what? What is Fore for?</p>
+						<p>hope to shed some light on what it can do...</p>
+					</aside>
 				</section>
 
 				<section>
 					<h2>Fore is for editing</h2>
-					<h1>XML</h1>
-					<p class="fragment"> (and JSON) </p>
+					<h2><span data-id="struc">structured</span> XML</h2>
 					<h2>in the browser.</h2>
+					<p class="fragment"> and JSON! </p>
+					<aside class="notes">
+						<p>that's a biggy... XML in the browser</p>
+						<p>structured?</p>
+						<p>not a document editor</p>
+					</aside>
 				</section>
 
 				<section data-auto-animate>
-					<p>why should i care?</p>
+					<h3>why should i care?</h3>
 					<h2 class="fragment">The Problem</h2>
 					<div class="fragment">
 					<p style="text-align: left">what HTML gives us...</p>
@@ -167,49 +217,104 @@
 -->
 
 				<section>
-					<h2 class="r-fit-text">Result?</h2>
+					<h2>Result?</h2>
 				</section>
+
 				<section data-transition="zoom">
-					<h2 class="r-fit-text">Work!</h2>
+					<h2>Work!</h2>
 					<ul style="list-style: none">
 						<li class="fragment">decode params on server</li>
 						<li class="fragment">check values</li>
 						<li class="fragment">map to their target</li>
 					</ul>
 					<p class="fragment">And what about nested data?</p>
+					<aside class="notes">
+						<p>not that nice type of work</p>
+						<p>repetitive coding that just takes time and money</p>
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+					<h3>What about JSON?</span></h3>
+					<p class="fragment">It's lightweight</p>
+					<p class="fragment">It's all-around in client-side world</p>
+					<p class="fragment">It's allows structured data <br> and even supports a schema</p>
+					<p class="fragment">Many libraries available</p>
+					<aside class="notes">
+						<p>sounds perfect...</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>But...</h3>
+					<p class="fragment">no standard query language</p>
+					<p class="fragment">existing JSON Path libs are heavy</p>
+					<p class="fragment">no easy filtering, no functions, limited predicates</p>
+					<p class="fragment">mapping required for XML</p>
+					<p class="fragment">requires commitment to certain framework</p>
+
+					<aside class="notes">
+						<p>why is a query language important?</p>
+						<p>heavy - smallest ~ 250k</p>
+						<p>react, vue or angular - which will be there in 5 years?</p>
+						<p>software breaks by dependencies nowadays</p>
+					</aside>
 				</section>
 
 				<section data-transition="convex">
-					<h2 class="r-fit-text">enter Fore</h2>
+					<h3>enter Fore</h3>
 					<p style="text-align: left" class="fragment">The unavoidable feature list...</p>
-					<ul class="features" style="list-style: none">
+					<ul>
 						<li class="fragment">Model-driven</li>
-						<li class="fragment">declarative - no scripting required</li>
+						<li class="fragment">declarative - describe it don't script it</li>
 						<li class="fragment">multi-instance</li>
 						<li class="fragment">state engine with data dependency tracking</li>
 						<li class="fragment">just pure platform - minimal dependencies</li>
-						<li class="fragment">and...</li>
+						<li class="fragment">vanilla web components</li>
 					</ul>
 					<aside class="notes">
 						MVC - separation of data, logic and UI<br>
 						declarative - describe it don't script it - generateable<br>
 						not just one instance...<br>
-						consistency of a state engine that calcs in the right order<br>
+						consistency of data / state engine that calcs in the right order<br>
+
+						<p>vanilla web components</p>
+						<p>minimal dependencies</p>
 					</aside>
+				</section>
+
+				<section>
+					<h3>Web Components</h3>
+					<p class="fragment">Web Components - pure HTML5 DNA</p>
+					<p class="fragment">native support in all modern browsers</p>
+					<p class="fragment">arbitrary elements with custom behavior</p>
+					<p class="fragment">'vanilla' web components</p>
+
 				</section>
 
 				<section data-transition="zoom">
 					<h2>It's Open Source</h2>
 					<p>MIT License</p>
 				</section>
+
 				<section data-auto-animate>
 					<h2>Writing forms</h2>
-					<h3 data-id="code-title">The barebones</h3>
-					<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1,3">
+					<div class="fragment">
+						<h3 data-id="code-title">The barebones</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1,3">
 						<fx-form>
 							...
 						</fx-form>
 					</code></pre>
+					</div>
+					<aside class="notes">
+						<p>Fore uses web components</p>
+						<p> dash in name</p>
+						<p>Fore elements are prefixed 'fx'</p>
+						<p>web component is just an element...</p>
+						<p>built into the browser</p>
+						<p>pure DNA of HTML5</p>
+					</aside>
 				</section>
 
 				<section data-auto-animate>
@@ -220,7 +325,7 @@
 						</fx-form>
 					</script></code></pre>
 
-					<p class="fragment left">a <code>ref</code> is an <span style="border-bottom:solid 1px;">XPath 3</span> expression</p>
+					<p class="fragment left">a <code>ref</code> is an <span style="border-bottom:solid 1px;">XPath 3.1</span> expression</p>
 					<p class="fragment left">that binds controls to data nodes</p>
 					<aside class="notes">
 						which data?
@@ -452,12 +557,51 @@
 				</section>
 
 				<section>
+					<h3>Current Limitations</h3>
+					<ul>
+						<li class="fragment">it's still a pre-release</li>
+						<li class="fragment">JSON support</li>
+						<li class="fragment">missing actions</li>
+						<li class="fragment">missing submission features</li>
+						<li class="fragment">no server-side validation yet</li>
+						<li class="fragment">many ideas - no funding</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>- Kudos -</h2>
+					<h3>XForms Working Group</h3>
+					<h3>fontoXPath</h3>
+					<p>https://github.com/FontoXML/fontoxpath</p>
+				</section>
+
+				<section>
 					<h3>Github</h3>
 					<p>https://github.com/Jinntec/Fore</p>
 					<h3>Github Discussions</h3>
 					<p>https://github.com/Jinntec/Fore/discussions</p>
 					<h3>Npm</h3>
 					<p>https://www.npmjs.com/package/@jinntec/fore</p>
+				</section>
+
+				<section data-transition="concave">
+					<h3>What about integration?</h3>
+					<h4 class="fragment fade-in-then-out">Lessons learned <br> don't use no framework!</h4>
+					<img class="fragment logos" id="fore" src="images/fore-logo.png"><br>
+					<div class="logogrid">
+						<img  class="fragment logos" src="images/existdb.png">
+						<img  class="fragment logos" src="images/tei-publisher-logo-color.svg">
+					</div>
+
+					<aside class="notes">
+						<p>fore and eXist-db...</p>
+						<p>easy integration in app</p>
+						<p>CDN</p>
+
+						<br><br>
+						<p>fore and publisher...</p>
+						<p>nicely interacts with Roaster Open API</p>
+					</aside>
 				</section>
 
 				<section data-transition="convex" data-background="orange">
@@ -652,14 +796,17 @@
 					<aside class="notes">
 						<ol>
 							<li>adding UI</li>
-							<li>setting teiHeader as context ref</li>
-							<li>not using namespace in this demo</li>
-							<li>not using namespace in this demo</li>
+							<li>setting teiHeader as context ref (wondering about XPath? not using namespace in this demo)</li>
+							<li>decided to split repeats for title, author + editor</li>
+							<li>adding a repeat</li>
+							<li>setting the ref</li>
+							<li>adding delete</li>
+							<li>adding append</li>
 						</ol>
 					</aside>
 				</section>
 				<section data-background="orange">
-					<h3>repeat...</h3>
+					<h3>repeat the repeat</h3>
 
 					<pre data-id="code-animation"><code data-rim data-line-numbers="4-17|19-32|20|31|34-47|1-49"><script type="text/template">
 						<fx-group ref="teiHeader">
@@ -773,11 +920,8 @@
 
 				<section data-background="orange"  class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-2.html">
 					<h3 style="margin-top:2.5rem;">style please</h3>
-
-					<section style="overflow: auto" data-background-iframe="http://localhost:8090/demo/simple-tei-header-2.html">
-					</section>
-					<aside style="position: absolute;right: -5rem;bottom:0;">
-						<pre style="opacity: 0.8" data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">
+					<aside style="position: absolute;right:-120pt;top:0;">
+						<pre style="opacity: 0.8;" data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">
 							<style>
 								.deleteIcon button {
 									border: none;
@@ -802,6 +946,9 @@
 							</style>
 						</script></code></pre>
 					</aside>
+
+					<section style="overflow: auto" data-background-iframe="http://localhost:8090/demo/simple-tei-header-2.html">
+					</section>
 				</section>
 
 				<section data-background="orange">
@@ -926,7 +1073,6 @@
 
 				</section>
 
-
 				<section data-background="orange" class="live">
 					<h3 style="margin-top:2.5rem;">switch with toggles</h3>
 					<section class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-3.html">
@@ -937,9 +1083,17 @@
 					<a href="http://localhost:8090/demo/simple-tei-header.html" target="_blank"><h3>a couple of refinements later</h3></a>
 				</section>
 
+				<section data-transition="fade">
+					<h3>The future</h3>
+					<p class="fragment">first release late summer</p>
+					<p class="fragment">JSON support</p>
+					<p class="fragment">Super-Controls</p>
+					<p class="fragment">forms generation</p>
+				</section>
+
 				<section data-background="white" data-transition="zoom">
 					<h2>Thank you!</h2>
-					<p>Please give us a <img src="images/star.png"> on github</p>
+					<p>Please give us a <img style="vertical-align: middle;" src="images/star.png"> on github</p>
 					<p>https://github.com/Jinntec/Fore</p>
 				</section>
 				<!--
