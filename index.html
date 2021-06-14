@@ -115,6 +115,26 @@
 			.re<veal img{
 				vertical-align: middle;
 			}
+
+			.hljs{
+				background: #212121;
+				border-radius: 5px;
+			}
+			.hljs-tag, .hljs-keyword, .hljs-selector-tag, .hljs-literal, .hljs-strong, .hljs-name {
+				/*color: #ff3d00;*/
+				/*color: #ffab00;*/
+				color: #29b6f6;
+				/*color: #e91e63;*/
+				/*color: #ffecb3;*/
+			}
+			.jumpout{
+				display: inline-block;
+				padding: 1rem;
+			}
+			.jumpout:hover{
+				background-color:rgba(255, 255, 255, 0.5);
+				border-radius: 0.5rem;
+			}
 		</style>
 	</head>
 	<body>
@@ -124,23 +144,23 @@
 					<img id="logo" src="images/fore-logo.png">
 					<h1 class="r-fit-text">An <span data-id="xf">XForms</span> Framework in Web Components</h1>
 					<aside class="notes">
-						<ul>
-							<li>hello ... my name</li>
-							<li>involved with XForms ...</li>
+							<p>hello ... my name</p>
+							<p>involved with front-end at jinntec + exist solutions</p>
+							<p>working e.g. on TEI-Publisher and other areas</p>
+							<p>involved with XForms ...</p>
+
+							<h2>today i present Fore and show it in practice</h2>
+							<p>next</p>
 							<li>call it 'xformish'</li>
-						</ul>
 					</aside>
 				</section>
 
-				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 5.000)">
+				<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.770, 0.000, 0.175, 5.000)" data-background-color="#03a9f4">
 					<img id="logo" src="images/fore-logo.png">
 					<h1 class="r-fit-text">An <span data-id="xf" style="border-bottom:solid 1px;text-transform: none;">xformish</span> Framework in Web Components</h1>
 					<aside class="notes">
 						<ul>
-							<li>kudos to the spec writers</li>
-							<li>unmatched architecture for handling forms</li>
 							<li>no claim to implement the standard</li>
-
 						</ul>
 						<p>let's dive in</p>
 					</aside>
@@ -158,6 +178,7 @@
 						<p>Part two</p>
 						<h4>Editing a TEI header</h4>
 					</div>
+
 					<aside class="notes">
 						<ul>
 							<li>the title is...</li>
@@ -179,7 +200,7 @@
 					</aside>
 				</section>
 
-				<section>
+				<section data-background-color="#607d8b">
 					<h2>Fore is for editing</h2>
 					<h2><span data-id="struc">structured</span> XML</h2>
 					<h2>in the browser.</h2>
@@ -193,7 +214,6 @@
 
 				<section data-auto-animate>
 					<h3>why should i care?</h3>
-					<h2 class="fragment">The Problem</h2>
 					<div class="fragment">
 					<p style="text-align: left">what HTML gives us...</p>
 					<pre data-id="code-animation" ><code class="hljs" data-trim data-line-numbers>
@@ -207,21 +227,15 @@
 					<p class="fragment">...are just key/value pairs submitted url-encoded or as part of a request body.</p>
 <!--					<p class="fragment">forename:Hans, lastname:Seitan</p>-->
 
+					<aside class="notes">
+						<p>if there's a need for structured XML...</p>
+						<p>and assuming the browser is your front-end</p>
+						<p>what are your options?</p>
+					</aside>
 				</section>
-
-<!--
-				<section>
-					<h2>Use JSON</h2>
-
-				</section>
--->
 
 				<section>
-					<h2>Result?</h2>
-				</section>
-
-				<section data-transition="zoom">
-					<h2>Work!</h2>
+					<h2>Using the primitives?</h2>
 					<ul style="list-style: none">
 						<li class="fragment">decode params on server</li>
 						<li class="fragment">check values</li>
@@ -229,9 +243,9 @@
 					</ul>
 					<p class="fragment">And what about nested data?</p>
 					<aside class="notes">
-						<p>not that nice type of work</p>
-						<p>repetitive coding that just takes time and money</p>
+						<p>-> repetitive work</p>
 					</aside>
+
 				</section>
 
 				<section data-auto-animate>
@@ -261,7 +275,7 @@
 					</aside>
 				</section>
 
-				<section data-transition="convex">
+				<section data-transition="convex" data-background-color="#607d8b">
 					<h3>enter Fore</h3>
 					<p style="text-align: left" class="fragment">The unavoidable feature list...</p>
 					<ul>
@@ -283,7 +297,12 @@
 					</aside>
 				</section>
 
-				<section>
+				<section data-transition="zoom" data-background-color="#607d8b">
+					<h2>It's Open Source</h2>
+					<p>MIT License</p>
+				</section>
+
+				<section data-transition="convex" data-background-color="#03a9f4">
 					<h3>Web Components</h3>
 					<p class="fragment">Web Components - pure HTML5 DNA</p>
 					<p class="fragment">native support in all modern browsers</p>
@@ -292,10 +311,6 @@
 
 				</section>
 
-				<section data-transition="zoom">
-					<h2>It's Open Source</h2>
-					<p>MIT License</p>
-				</section>
 
 				<section data-auto-animate>
 					<h2>Writing forms</h2>
@@ -556,26 +571,9 @@
 					<p>custom functions in XPath and Javascript</p>
 				</section>
 
-				<section>
-					<h3>Current Limitations</h3>
-					<ul>
-						<li class="fragment">it's still a pre-release</li>
-						<li class="fragment">JSON support</li>
-						<li class="fragment">missing actions</li>
-						<li class="fragment">missing submission features</li>
-						<li class="fragment">no server-side validation yet</li>
-						<li class="fragment">many ideas - no funding</li>
-					</ul>
-				</section>
 
-				<section>
-					<h2>- Kudos -</h2>
-					<h3>XForms Working Group</h3>
-					<h3>fontoXPath</h3>
-					<p>https://github.com/FontoXML/fontoxpath</p>
-				</section>
 
-				<section>
+				<section data-transition="zoom">
 					<h3>Github</h3>
 					<p>https://github.com/Jinntec/Fore</p>
 					<h3>Github Discussions</h3>
@@ -584,38 +582,50 @@
 					<p>https://www.npmjs.com/package/@jinntec/fore</p>
 				</section>
 
-				<section data-transition="concave">
+ 				<section  data-background-color="white" data-transition="zoom">
+					<h2>Thank you!</h2>
+					<p>Please give us a <img style="vertical-align: middle;" src="images/star.png"> on github</p>
+					<p>https://github.com/Jinntec/Fore</p>
+				</section>
+
+
+
+
+				<section data-transition="concave" data-background-color="#03a9f4">
 					<h3>What about integration?</h3>
-					<h4 class="fragment fade-in-then-out">Lessons learned <br> don't use no framework!</h4>
 					<img class="fragment logos" id="fore" src="images/fore-logo.png"><br>
 					<div class="logogrid">
-						<img  class="fragment logos" src="images/existdb.png">
+						<img  class="fragment logos" src="images/existdb-web.svg">
 						<img  class="fragment logos" src="images/tei-publisher-logo-color.svg">
 					</div>
 
 					<aside class="notes">
 						<p>fore and eXist-db...</p>
 						<p>easy integration in app</p>
-						<p>CDN</p>
+						<p>package dist, CDN</p>
+						<p>fits within eXist-db landscape -> web components</p>
 
 						<br><br>
 						<p>fore and publisher...</p>
 						<p>nicely interacts with Roaster Open API</p>
+						<p>Publisher also uses web components and Fore can re-use those as controls</p>
 					</aside>
 				</section>
 
-				<section data-transition="convex" data-background="orange">
-					<h2>Part 2</h2>
-					<h3>editing a simple TEI header</h3>
+				<section data-transition="convex" data-background-color="#ffca28">
+					<div class="intro">
+						<p>Part two</p>
+						<h3>editing a simple TEI header</h3>
+					</div>
 				</section>
 
-				<section data-background="orange">
+				<section data-background-color="#ffca28">
 					<h2>the goal...</h2>
 				</section>
 
-				<section data-background="orange">
+				<section data-background-color="#ffca28">
 					<h3>Edit a basic TEI header</h3>
-					<div class="r-stretch">
+					<div>
 <!--					<pre class="code" style="height: 70vh;font-size:0.8rem;" data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">-->
 					<pre data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">
 						<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
@@ -670,7 +680,7 @@
 
 				</section>
 
-				<section data-background="orange">
+				<section  data-background-color="#ffca28">
 					<h3>the barebones</h3>
 					<pre data-id="code-animation"><code data-trim data-line-numbers="|1|21|13-20|15"><script type="text/template">
 					<html lang="en" xmlns:tei="http://www.tei-c.org/ns/1.0">
@@ -707,7 +717,8 @@
 					</aside>
 
 				</section>
-				<section data-background="orange">
+
+				<section data-background-color="#ffca28">
 					<h3>adding UI</h3>
 					<pre data-id="code-animation"><code data-trim data-line-numbers="18-34|18|19|20|21-29|21|22-28|23|24-27|25|26|30-33|32|20-33"><script type="text/template">
 					<html lang="en" xmlns:tei="http://www.tei-c.org/ns/1.0">
@@ -805,7 +816,7 @@
 						</ol>
 					</aside>
 				</section>
-				<section data-background="orange">
+				<section data-background-color="#ffca28">
 					<h3>repeat the repeat</h3>
 
 					<pre data-id="code-animation"><code data-rim data-line-numbers="4-17|19-32|20|31|34-47|1-49"><script type="text/template">
@@ -912,13 +923,13 @@
 					</aside>
 				</section>
 
-				<section data-background="orange" class="live">
+				<section data-background-color="#ffca28" class="live">
 					<h3 style="margin-top:2.5rem;">result so far</h3>
 					<section class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-1.html">
 					</section>
 				</section>
 
-				<section data-background="orange"  class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-2.html">
+				<section data-background-color="#ffca28"  class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-2.html">
 					<h3 style="margin-top:2.5rem;">style please</h3>
 					<aside style="position: absolute;right:-120pt;top:0;">
 						<pre style="opacity: 0.8;" data-id="code-animation"><code data-trim data-line-numbers><script type="text/template">
@@ -951,7 +962,7 @@
 					</section>
 				</section>
 
-				<section data-background="orange">
+				<section data-background-color="#ffca28">
 					<h3>add more structure</h3>
 <pre data-id="code-animation"><code data-rim data-line-numbers="|15-71|16-17|65-66|68-69|3-6|5|7-10|11-14"><script type="text/template">
 	<fx-group ref="teiHeader">
@@ -1073,42 +1084,49 @@
 
 				</section>
 
-				<section data-background="orange" class="live">
+				<section data-background-color="#ffca28" class="live">
 					<h3 style="margin-top:2.5rem;">switch with toggles</h3>
 					<section class="live" data-background-iframe="http://localhost:8090/demo/simple-tei-header-3.html">
 					</section>
 				</section>
 
-				<section data-background="orange" data-transition="convex">
-					<a href="http://localhost:8090/demo/simple-tei-header.html" target="_blank"><h3>a couple of refinements later</h3></a>
+				<section data-background-color="#ffca28" data-transition="convex">
+					<a class="jumpout" href="http://localhost:8090/demo/simple-tei-header.html" target="_blank"><h3>a couple of
+						<br> refinements later...</h3></a>
 				</section>
 
-				<section data-transition="fade">
+
+
+				<section>
+					<h3>Current Limitations</h3>
+					<ul>
+						<li class="fragment">it's still a pre-release</li>
+						<li class="fragment">JSON support</li>
+						<li class="fragment">missing actions</li>
+						<li class="fragment">missing submission features</li>
+						<li class="fragment">no server-side validation yet</li>
+						<li class="fragment">many ideas - limited funding</li>
+					</ul>
+				</section>
+
+				<section data-transition="fade" data-visibility="uncounted">
 					<h3>The future</h3>
-					<p class="fragment">first release late summer</p>
+					<p class="fragment">first release late summer / atumn</p>
 					<p class="fragment">JSON support</p>
 					<p class="fragment">Super-Controls</p>
 					<p class="fragment">forms generation</p>
+					<p class="fragment">contribute yours!</p>
+
 				</section>
 
-				<section data-background="white" data-transition="zoom">
-					<h2>Thank you!</h2>
-					<p>Please give us a <img style="vertical-align: middle;" src="images/star.png"> on github</p>
-					<p>https://github.com/Jinntec/Fore</p>
+				<section data-visibility="uncounted">
+					<h2>- Kudos -</h2>
+					<h3>XForms Working Group</h3>
+					<h3>fontoXPath</h3>
+					<p>https://github.com/FontoXML/fontoxpath</p>
 				</section>
-				<!--
-                                <section>
-                                    <h2>JSON Forms!</h2>
-                                    <p class="fragment">Does it solve our problem?</p>
-                                    <p class="fragment">Solves both problems at once!</p>
-                                    <p class="fragment">doesn't it?</p>
-                                </section>
 
-                                <section>
-                                    <p>But i have documents - i mean markup</p>
-                                    <p class="fragment">and metadata</p>
-                                </section>
-                -->
+
 			</div>
 		</div>
 
