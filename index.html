@@ -150,9 +150,11 @@
 							<p>hello ... my name</p>
 							<p>involved with front-end at jinntec + exist solutions</p>
 							<p>working e.g. on TEI-Publisher and other areas</p>
-							<p>involved with XForms ...</p>
+							<p>have been involved with XForms as one developer - chiba, betterFORM ...</p>
+							<p>due to compatibility issues with eXist-db betterFORM was dropped.</p>
+							<p>Fore is an attempt to provide an modernized alternative</p>
 
-							<h2>today i present Fore and show it in practice</h2>
+							<h2>today i present i have the honor to....</h2>
 							<p>next</p>
 							<li>call it 'xformish'</li>
 					</aside>
@@ -212,12 +214,14 @@
 						<p>that's a biggy... XML in the browser</p>
 						<p>structured?</p>
 						<p>not a document editor</p>
+
+						<p>native JSON -> without converting to XML</p>
 					</aside>
 				</section>
 
 				<section data-auto-animate>
 					<h3>why should i care?</h3>
-					<div class="fragment">
+					<div>
 					<p style="text-align: left">what HTML gives us...</p>
 <pre data-id="code-animation" ><code class="hljs" data-trim data-line-numbers>
 	<form>
@@ -226,36 +230,35 @@
 	</form>
 </code></pre>
 					</div>
-					<p class="fragment">...are just key/value pairs submitted url-encoded or as part of a request body.</p>
+					<p>...are just key/value pairs submitted url-encoded or as part of a request body.</p>
 <!--					<p class="fragment">forename:Hans, lastname:Seitan</p>-->
 
 					<aside class="notes">
-						<p>if there's a need for structured XML...</p>
-						<p>and assuming the browser is your front-end</p>
-						<p>what are your options?</p>
+						<p>so... what are our options?</p>
 					</aside>
 				</section>
 
 				<section>
 					<h2>Using the primitives?</h2>
 					<ul style="list-style: none">
-						<li class="fragment">decode params on server</li>
-						<li class="fragment">check values</li>
-						<li class="fragment">map to their target</li>
+						<li>decode params on server</li>
+						<li>check values</li>
+						<li>map to their target</li>
 					</ul>
 					<p class="fragment">And what about nested data?</p>
 					<aside class="notes">
+						<p>when going with the pure platform...</p>
 						<p>-> repetitive work</p>
 					</aside>
 
 				</section>
 
 				<section data-auto-animate>
-					<h3>What about JSON?</span></h3>
-					<p class="fragment">It's lightweight</p>
-					<p class="fragment">It's all-around in client-side world</p>
-					<p class="fragment">It's allows structured data <br> and even supports a schema</p>
-					<p class="fragment">Many libraries available</p>
+					<h3>JSON to the rescue</span></h3>
+					<p>It's lightweight</p>
+					<p>It's all-around in client-side world</p>
+					<p>It's allows structured data <br> and even supports a schema</p>
+					<p>Many libraries available</p>
 					<aside class="notes">
 						<p>sounds perfect...</p>
 					</aside>
@@ -263,11 +266,11 @@
 
 				<section>
 					<h3>But...</h3>
-					<p class="fragment">no standard query language</p>
-					<p class="fragment">existing JSON Path libs are heavy</p>
-					<p class="fragment">no easy filtering, no functions, limited predicates</p>
-					<p class="fragment">mapping required for XML</p>
-					<p class="fragment">requires commitment to certain framework</p>
+					<p>no standard query language</p>
+					<p>existing JSON Path libs are heavy</p>
+					<p>no easy filtering, no functions, limited predicates</p>
+					<p>mapping required for XML</p>
+					<p>requires commitment to certain framework</p>
 
 					<aside class="notes">
 						<p>why is a query language important?</p>
@@ -279,7 +282,7 @@
 
 				<section data-transition="convex" data-background-color="#607d8b">
 					<h3>enter Fore</h3>
-					<p class="fragment">The unavoidable feature list...</p>
+					<p>The unavoidable feature list...</p>
 					<ul>
 						<li class="fragment">Model-driven</li>
 						<li class="fragment">declarative - describe it don't script it</li>
@@ -306,11 +309,12 @@
 
 				<section data-transition="convex" data-background-color="#03a9f4">
 					<h3>Web Components</h3>
-					<p class="fragment">Web Components - pure HTML5 DNA</p>
-					<p class="fragment">native support in all modern browsers</p>
-					<p class="fragment">arbitrary elements with custom behavior</p>
-					<p class="fragment">'vanilla' web components</p>
-
+					<p>Web Components - pure HTML5 DNA</p>
+					<p>native support in all modern browsers</p>
+					<p>arbitrary elements with custom behavior</p>
+					<aside class="notes">
+						<p>short excursion into web components</p>
+					</aside>
 				</section>
 
 
@@ -342,12 +346,10 @@
 						</fx-form>
 					</script></code></pre>
 
-					<p class="fragment left">a <code>ref</code> is an <span style="border-bottom:solid 1px;">XPath 3.1</span> expression</p>
-					<p class="fragment left">that binds controls to data nodes</p>
+					<p class="left">a <code>ref</code> is an <span style="border-bottom:solid 1px;">XPath 3.1</span> expression</p>
+					<p class="left">that binds controls to data nodes</p>
 					<aside class="notes">
-						which data?
-
-						which model?
+						<p>where is the model?</p>
 					</aside>
 
 				</section>
@@ -367,6 +369,9 @@
 							<fx-control ref="greeting"></fx-control>
 						</fx-form>
 					</script></code></pre>
+					<aside class="notes">
+						
+					</aside>
 				</section>
 
 				<section data-auto-animate>
@@ -490,7 +495,7 @@
 
 				<section>
 					<h3>Submissions</h3>
-					<p class="fragment">The Swiss army knife<br> of request handling</p>
+					<p>The Swiss army knife<br> of request handling</p>
 
 					<div class="fragment">
 					<pre data-id="code-animation"><code data-trim data-line-numbers="8"><script type="text/template">
@@ -527,11 +532,11 @@
 									   replace="instance"></fx-submission>
 					</script></code></pre>
 
-					<p class="fragment"><code>instance</code> - uses the response as new instance data</p>
-					<p class="fragment"><code>all</code> - uses the response and replaces viewport</p>
-					<p class="fragment"><code>none</code> - ignore response data</p>
-					<p class="fragment"><code>redirect</code> - expect URL as string to redirect to</p>
-					<p class="fragment"><code>target</code> - expecting HTML and replacing some part of the UI</p>
+					<p><code>instance</code> - uses the response as new instance data</p>
+					<p><code>all</code> - uses the response and replaces viewport</p>
+					<p><code>none</code> - ignore response data</p>
+					<p><code>redirect</code> - expect URL as string to redirect to</p>
+					<p><code>target</code> - expecting HTML and replacing some part of the UI</p>
 				</section>
 
 				<section>
