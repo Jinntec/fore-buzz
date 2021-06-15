@@ -219,10 +219,70 @@
 					</aside>
 				</section>
 
+				<section data-auto-animate>
+					<h3>why should i care?</h3>
+					<div>
+					<p style="text-align: left">what HTML gives us...</p>
+<pre data-id="code-animation" ><code class="hljs" data-trim data-line-numbers>
+	<form>
+		<input name="forename">
+		<input name="lastname">
+	</form>
+</code></pre>
+					</div>
+					<p>...are just key/value pairs submitted url-encoded or as part of a request body.</p>
+<!--					<p class="fragment">forename:Hans, lastname:Seitan</p>-->
+
+					<aside class="notes">
+						<p>so... what are our options?</p>
+					</aside>
+				</section>
+
+				<section>
+					<h2>Using the primitives?</h2>
+					<ul style="list-style: none">
+						<li>decode params on server</li>
+						<li>check values</li>
+						<li>map to their target</li>
+					</ul>
+					<p class="fragment">And what about nested data?</p>
+					<aside class="notes">
+						<p>when going with the pure platform...</p>
+						<p>-> repetitive work</p>
+					</aside>
+
+				</section>
+
+				<section data-auto-animate>
+					<h3>JSON to the rescue</span></h3>
+					<p>It's lightweight</p>
+					<p>It's all-around in client-side world</p>
+					<p>It's allows structured data <br> and even supports a schema</p>
+					<p>Many libraries available</p>
+					<aside class="notes">
+						<p>sounds perfect...</p>
+					</aside>
+				</section>
+
+				<section>
+					<h3>But...</h3>
+					<p>no standard query language</p>
+					<p>existing JSON Path libs are heavy</p>
+					<p>no easy filtering, no functions, limited predicates</p>
+					<p>mapping required for XML</p>
+					<p>requires commitment to certain framework</p>
+
+					<aside class="notes">
+						<p>why is a query language important?</p>
+						<p>heavy - smallest ~ 250k</p>
+						<p>react, vue or angular - which will be there in 5 years?</p>
+						<p>software breaks by dependencies nowadays</p>
+					</aside>
+				</section>
 
 				<section data-transition="convex" data-background-color="#607d8b">
-<!--					<h3>enter Fore</h3>-->
-					<h3>The unavoidable feature list...</h3>
+					<h3>enter Fore</h3>
+					<p>The unavoidable feature list...</p>
 					<ul>
 						<li class="fragment">Model-driven</li>
 						<li class="fragment">declarative - describe it don't script it</li>
@@ -237,10 +297,8 @@
 						not just one instance...<br>
 						consistency of data / state engine that calcs in the right order<br>
 
-						<h3>there's a saying that software nowadays breaks by dependencies</h3>
 						<p>vanilla web components</p>
 						<p>minimal dependencies</p>
-
 					</aside>
 				</section>
 
@@ -258,6 +316,286 @@
 						<p>short excursion into web components</p>
 					</aside>
 				</section>
+
+
+				<section data-auto-animate>
+					<h2>Writing forms</h2>
+					<div class="fragment">
+						<h3 data-id="code-title">The barebones</h3>
+						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1,3">
+						<fx-form>
+							...
+						</fx-form>
+					</code></pre>
+					</div>
+					<aside class="notes">
+						<p>Fore uses web components</p>
+						<p> dash in name</p>
+						<p>Fore elements are prefixed 'fx'</p>
+						<p>web component is just an element...</p>
+						<p>built into the browser</p>
+						<p>pure DNA of HTML5</p>
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">The magic ref</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="2"><script type="text/template">
+						<fx-form>
+							<fx-control ref="greeting"></fx-control>
+						</fx-form>
+					</script></code></pre>
+
+					<p class="left">a <code>ref</code> is an <span style="border-bottom:solid 1px;">XPath 3.1</span> expression</p>
+					<p class="left">that binds controls to data nodes</p>
+					<aside class="notes">
+						<p>where is the model?</p>
+					</aside>
+
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">auto-generated model</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="2-10"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+							</fx-model>
+
+							<fx-control ref="greeting"></fx-control>
+						</fx-form>
+					</script></code></pre>
+					<aside class="notes">
+
+					</aside>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">two-way binding</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="10"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+							</fx-model>
+
+							<fx-control ref="greeting" value="Hello"></fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">Model to UI - UI to model</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="5,10"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting>Hello</greeting>
+									</data>
+								</fx-instance>
+							</fx-model>
+
+							<fx-control ref="greeting" value="Hello"></fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">Attach a constraint</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="8|8,11"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-bind ref="greeting" required="true()"></fx-bind>
+							</fx-model>
+
+							<fx-control ref="greeting"></fx-control>
+						</fx-form>
+					</script></code></pre>
+
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">Other constraints</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="8-13"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-bind ref="greeting"
+										 required="true()"
+										 readonly="true()"
+										 constraint="false()"
+										 relevant="true()"
+										 type="string"></fx-bind>
+							</fx-model>
+
+							<fx-control ref="greeting"></fx-control>
+						</fx-form>
+					</script></code></pre>
+<!--					<aside class="explanation fragment">you can add as many binds as needed and nest them</aside>-->
+
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">speak to the user</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="12"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-bind ref="greeting" required="true()"></fx-bind>
+							</fx-model>
+
+							<fx-control ref="greeting">
+								<fx-alert>Hey - be polite please</fx-alert>
+							</fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section data-auto-animate>
+					<h3 data-id="code-title">Actions and Events</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="13"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-bind ref="greeting" required="true()"></fx-bind>
+							</fx-model>
+
+							<fx-control ref="greeting">
+								<fx-alert>Hey - be polite please</fx-alert>
+								<fx-message event="value-changed">Thanks</fx-message>
+							</fx-control>
+						</fx-form>
+					</script></code></pre>
+				</section>
+
+				<section>
+					<h3>Submissions</h3>
+					<p>The Swiss army knife<br> of request handling</p>
+
+					<div class="fragment">
+					<pre data-id="code-animation"><code data-trim data-line-numbers="8"><script type="text/template">
+						<fx-form>
+							<fx-model>
+								<fx-instance>
+									<data>
+										<greeting></greeting>
+									</data>
+								</fx-instance>
+								<fx-submission url="someUrl" method="post" replace="instance"></fx-submission>
+							</fx-model>
+							... UI ...
+						</fx-form>
+					</script></code></pre>
+					</div>
+				</section>
+
+				<section>
+					<h3>get, put, post, delete...</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="2"><script type="text/template">
+						<fx-submission url="someUrl"
+									   method="post">
+						</fx-submission>
+					</script></code></pre>
+
+				</section>
+
+				<section class="replace">
+					<h3>the mighty <code>replace</code> attribute</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="3"><script type="text/template">
+						<fx-submission url="someUrl"
+									   method="post"
+									   replace="instance"></fx-submission>
+					</script></code></pre>
+
+					<p><code>instance</code> - uses the response as new instance data</p>
+					<p><code>all</code> - uses the response and replaces viewport</p>
+					<p><code>none</code> - ignore response data</p>
+					<p><code>redirect</code> - expect URL as string to redirect to</p>
+					<p><code>target</code> - expecting HTML and replacing some part of the UI</p>
+				</section>
+
+				<section>
+					<h3>Submission Events</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="|4|5|6"><script type="text/template">
+						<fx-submission url="someUrl"
+									   method="post"
+									   replace="instance">
+							<fx-message event="submit">Going to submit</fx-message>
+							<fx-message event="submit-done">Yep - it worked</fx-message>
+							<fx-message event="submit-error">Ouch - something went wrong</fx-message>
+						</fx-submission>
+					</script></code></pre>
+
+				</section>
+
+				<section>
+					<h3>Submission chains</h3>
+					<pre data-id="code-animation"><code data-trim data-line-numbers="|4|6-8"><script type="text/template">
+						<fx-submission id="one" url="someUrl"
+									   method="get"
+									   replace="instance">
+							<fx-send submission="two" event="submit-done"></fx-send>
+						</fx-submission>
+						<fx-submission id="two" url="anotherUrl"
+									   method="post">
+						</fx-submission>
+					</script></code></pre>
+
+				</section>
+
+				<section>
+					<h3>There's more to say...</h3>
+					<p>more Actions</p>
+					<p>more Events</p>
+					<p>generic control, trigger and output elements</p>
+					<p>Template Expressions</p>
+					<p>Repeats and Switches</p>
+					<p>custom functions in XPath and Javascript</p>
+				</section>
+
+
+
+				<section data-transition="zoom">
+					<h3>Github</h3>
+					<p>https://github.com/Jinntec/Fore</p>
+					<h3>Github Discussions</h3>
+					<p>https://github.com/Jinntec/Fore/discussions</p>
+					<h3>Npm</h3>
+					<p>https://www.npmjs.com/package/@jinntec/fore</p>
+				</section>
+
+ 				<section  data-background-color="white" data-transition="zoom">
+					<h2>Thank you!</h2>
+					<p>Please give us a <img style="vertical-align: middle;" src="images/star.png"> on github</p>
+					<p>https://github.com/Jinntec/Fore</p>
+				</section>
+
+
 
 
 				<section data-transition="concave" data-background-color="#03a9f4">
@@ -372,7 +710,7 @@
 								<fx-group ref="teiHeader">
 								</fx-group>
 							</fx-form>
-							<script type="module" src="../dist/fore-all.js">
+							<script type="module" src="../index.js">
 						</body>
 					</html>
 					</script></code></pre>
@@ -488,7 +826,7 @@
 				<section data-background-color="#ffca28">
 					<h3>repeat the repeat</h3>
 
-					<pre data-id="code-animation"><code data-trim data-line-numbers="4-17|19-31|19|30|34-46|1-49"><script type="text/template">
+					<pre data-id="code-animation"><code data-trim data-line-numbers="4-17|19-31|19|30|34-47|1-49"><script type="text/template">
 						<fx-group ref="teiHeader">
 							<fx-group ref=".//titleStmt">
 								<h4>Title</h4>
@@ -765,360 +1103,16 @@
 				</section>
 
 
-<!--
-				<section data-auto-animate>
-					<h3>why should i care?</h3>
-					<div>
-						<p style="text-align: left">what HTML gives us...</p>
-						<pre data-id="code-animation" ><code class="hljs" data-trim data-line-numbers>
-	<form>
-		<input name="forename">
-		<input name="lastname">
-	</form>
-</code></pre>
-					</div>
-					<p>...are just key/value pairs submitted url-encoded or as part of a request body.</p>
-					&lt;!&ndash;					<p class="fragment">forename:Hans, lastname:Seitan</p>&ndash;&gt;
-
-					<aside class="notes">
-						<p>so... what are our options?</p>
-					</aside>
-				</section>
 
 				<section>
-					<h2>Using the primitives?</h2>
-					<ul style="list-style: none">
-						<li>decode params on server</li>
-						<li>check values</li>
-						<li>map to their target</li>
-					</ul>
-					<p class="fragment">And what about nested data?</p>
-					<aside class="notes">
-						<p>when going with the pure platform...</p>
-						<p>-> repetitive work</p>
-					</aside>
-
-				</section>
-
-				<section data-auto-animate>
-					<h3>JSON to the rescue</span></h3>
-					<p>It's lightweight</p>
-					<p>It's all-around in client-side world</p>
-					<p>It's allows structured data <br> and even supports a schema</p>
-					<p>Many libraries available</p>
-					<aside class="notes">
-						<p>sounds perfect...</p>
-					</aside>
-				</section>
-
-				<section>
-					<h3>But...</h3>
-					<p>no standard query language</p>
-					<p>existing JSON Path libs are heavy</p>
-					<p>no easy filtering, no functions, limited predicates</p>
-					<p>mapping required for XML</p>
-					<p>requires commitment to certain framework</p>
-
-					<aside class="notes">
-						<p>why is a query language important?</p>
-						<p>heavy - smallest ~ 250k</p>
-						<p>react, vue or angular - which will be there in 5 years?</p>
-						<p>software breaks by dependencies nowadays</p>
-					</aside>
-				</section>
--->
-
-				<section data-auto-animate>
-					<h2>Writing forms with Fore</h2>
-					<div class="fragment">
-						<h3 data-id="code-title">The barebones</h3>
-						<pre data-id="code-animation"><code class="hljs" data-trim data-line-numbers="1,3">
-						<fx-form>
-							...
-						</fx-form>
-					</code></pre>
-					</div>
-					<aside class="notes">
-						<p>Fore uses web components</p>
-						<p> dash in name</p>
-						<p>Fore elements are prefixed 'fx'</p>
-						<p>web component is just an element...</p>
-						<p>built into the browser</p>
-						<p>pure DNA of HTML5</p>
-					</aside>
-				</section>
-
-				<section data-auto-animate>
-					<h3 data-id="code-title">The magic ref</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="2"><script type="text/template">
-						<fx-form>
-							<fx-control ref="greeting"></fx-control>
-						</fx-form>
-					</script></code></pre>
-
-					<p class="left">a <code>ref</code> is an <span style="border-bottom:solid 1px;">XPath 3.1</span> expression</p>
-					<p class="left">that binds controls to data nodes</p>
-					<aside class="notes">
-						<p>where is the model?</p>
-					</aside>
-
-				</section>
-
-				<section data-auto-animate>
-					<h3 data-id="code-title">auto-generated model</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="2-10"><script type="text/template">
-						<fx-form>
-							<fx-model>
-								<fx-instance>
-									<data>
-										<greeting></greeting>
-									</data>
-								</fx-instance>
-							</fx-model>
-
-							<fx-control ref="greeting"></fx-control>
-						</fx-form>
-					</script></code></pre>
-					<aside class="notes">
-
-					</aside>
-				</section>
-
-				<section data-auto-animate>
-					<h3 data-id="code-title">two-way binding</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="10"><script type="text/template">
-						<fx-form>
-							<fx-model>
-								<fx-instance>
-									<data>
-										<greeting></greeting>
-									</data>
-								</fx-instance>
-							</fx-model>
-
-							<fx-control ref="greeting" value="Hello"></fx-control>
-						</fx-form>
-					</script></code></pre>
-				</section>
-
-				<section data-auto-animate>
-					<h3 data-id="code-title">Model to UI - UI to model</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="5,10"><script type="text/template">
-						<fx-form>
-							<fx-model>
-								<fx-instance>
-									<data>
-										<greeting>Hello</greeting>
-									</data>
-								</fx-instance>
-							</fx-model>
-
-							<fx-control ref="greeting" value="Hello"></fx-control>
-						</fx-form>
-					</script></code></pre>
-				</section>
-
-				<section data-auto-animate>
-					<h3 data-id="code-title">Attach a constraint</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="8|8,11"><script type="text/template">
-						<fx-form>
-							<fx-model>
-								<fx-instance>
-									<data>
-										<greeting></greeting>
-									</data>
-								</fx-instance>
-								<fx-bind ref="greeting" required="true()"></fx-bind>
-							</fx-model>
-
-							<fx-control ref="greeting"></fx-control>
-						</fx-form>
-					</script></code></pre>
-
-				</section>
-
-				<section data-auto-animate>
-					<h3 data-id="code-title">Other constraints</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="8-13"><script type="text/template">
-						<fx-form>
-							<fx-model>
-								<fx-instance>
-									<data>
-										<greeting></greeting>
-									</data>
-								</fx-instance>
-								<fx-bind ref="greeting"
-										 required="true()"
-										 readonly="true()"
-										 constraint="false()"
-										 relevant="true()"
-										 type="string"></fx-bind>
-							</fx-model>
-
-							<fx-control ref="greeting"></fx-control>
-						</fx-form>
-					</script></code></pre>
-					<!--					<aside class="explanation fragment">you can add as many binds as needed and nest them</aside>-->
-
-				</section>
-
-				<section data-auto-animate>
-					<h3 data-id="code-title">speak to the user</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="12"><script type="text/template">
-						<fx-form>
-							<fx-model>
-								<fx-instance>
-									<data>
-										<greeting></greeting>
-									</data>
-								</fx-instance>
-								<fx-bind ref="greeting" required="true()"></fx-bind>
-							</fx-model>
-
-							<fx-control ref="greeting">
-								<fx-alert>Hey - be polite please</fx-alert>
-							</fx-control>
-						</fx-form>
-					</script></code></pre>
-				</section>
-
-				<section data-auto-animate>
-					<h3 data-id="code-title">Actions and Events</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="13"><script type="text/template">
-						<fx-form>
-							<fx-model>
-								<fx-instance>
-									<data>
-										<greeting></greeting>
-									</data>
-								</fx-instance>
-								<fx-bind ref="greeting" required="true()"></fx-bind>
-							</fx-model>
-
-							<fx-control ref="greeting">
-								<fx-alert>Hey - be polite please</fx-alert>
-								<fx-message event="value-changed">Thanks</fx-message>
-							</fx-control>
-						</fx-form>
-					</script></code></pre>
-				</section>
-
-				<section>
-					<h3>Submissions</h3>
-					<p>The Swiss army knife<br> of request handling</p>
-
-					<div class="fragment">
-					<pre data-id="code-animation"><code data-trim data-line-numbers="8"><script type="text/template">
-						<fx-form>
-							<fx-model>
-								<fx-instance>
-									<data>
-										<greeting></greeting>
-									</data>
-								</fx-instance>
-								<fx-submission url="someUrl" method="post" replace="instance"></fx-submission>
-							</fx-model>
-							... UI ...
-						</fx-form>
-					</script></code></pre>
-					</div>
-				</section>
-
-				<section>
-					<h3>get, put, post, delete...</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="2"><script type="text/template">
-						<fx-submission url="someUrl"
-									   method="post">
-						</fx-submission>
-					</script></code></pre>
-
-				</section>
-
-				<section class="replace">
-					<h3>the mighty <code>replace</code> attribute</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="3"><script type="text/template">
-						<fx-submission url="someUrl"
-									   method="post"
-									   replace="instance"></fx-submission>
-					</script></code></pre>
-
-					<p><code>instance</code> - uses the response as new instance data</p>
-					<p><code>all</code> - uses the response and replaces viewport</p>
-					<p><code>none</code> - ignore response data</p>
-					<p><code>redirect</code> - expect URL as string to redirect to</p>
-					<p><code>target</code> - expecting HTML and replacing some part of the UI</p>
-				</section>
-
-				<section>
-					<h3>Submission Events</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="|4|5|6"><script type="text/template">
-						<fx-submission url="someUrl"
-									   method="post"
-									   replace="instance">
-							<fx-message event="submit">Going to submit</fx-message>
-							<fx-message event="submit-done">Yep - it worked</fx-message>
-							<fx-message event="submit-error">Ouch - something went wrong</fx-message>
-						</fx-submission>
-					</script></code></pre>
-
-				</section>
-
-				<section>
-					<h3>Submission chains</h3>
-					<pre data-id="code-animation"><code data-trim data-line-numbers="|4|6-8"><script type="text/template">
-						<fx-submission id="one" url="someUrl"
-									   method="get"
-									   replace="instance">
-							<fx-send submission="two" event="submit-done"></fx-send>
-						</fx-submission>
-						<fx-submission id="two" url="anotherUrl"
-									   method="post">
-						</fx-submission>
-					</script></code></pre>
-
-				</section>
-
-				<section>
-					<h3>There's more to say...</h3>
-					<p>more Actions</p>
-					<p>more Events</p>
-					<p>generic control, trigger and output elements</p>
-					<p>Template Expressions</p>
-					<p>Repeats and Switches</p>
-					<p>custom functions in XPath and Javascript</p>
-				</section>
-
-
-
-				<section data-transition="zoom">
-					<h3>Github</h3>
-					<p>https://github.com/Jinntec/Fore</p>
-					<h3>Github Discussions</h3>
-					<p>https://github.com/Jinntec/Fore/discussions</p>
-					<h3>Npm</h3>
-					<p>https://www.npmjs.com/package/@jinntec/fore</p>
-				</section>
-
-
-
-				<section data-background-color="white" data-transition="zoom">
-					<h2>Thank you!</h2>
-					<p>Please give us a <img style="vertical-align: middle;" src="images/star.png"> on github</p>
-					<p>https://github.com/Jinntec/Fore</p>
-				</section>
-
-
-
-
-				<section data-visibility="uncounted">
 					<h3>Current Limitations</h3>
 					<ul>
-						<li>it's still a pre-release</li>
-						<li>JSON support</li>
-						<li>missing actions</li>
-						<li>missing submission features</li>
-						<li>no server-side validation yet</li>
-						<li>many ideas - limited funding</li>
+						<li class="fragment">it's still a pre-release</li>
+						<li class="fragment">JSON support</li>
+						<li class="fragment">missing actions</li>
+						<li class="fragment">missing submission features</li>
+						<li class="fragment">no server-side validation yet</li>
+						<li class="fragment">many ideas - limited funding</li>
 					</ul>
 				</section>
 
